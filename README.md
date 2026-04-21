@@ -331,7 +331,21 @@ tr:hover td{background:#fafbfc}
 .sec-title{font-size:17px;font-weight:800;margin-bottom:12px}
 .online-dot{width:10px;height:10px;background:#22C55E;border-radius:50%;border:2px solid #fff;flex-shrink:0}
 
-/* ══ GRADIENT HELPERS ════════════════════════════════════════════ */
+/* ══ MOBILE BOTTOM NAV BAR ══════════════════════════════════════ */
+.mob-bot-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--border);z-index:100;padding:6px 0 env(safe-area-inset-bottom,6px)}
+.mob-bot-nav .mbn-items{display:flex;justify-content:space-around}
+.mbn-item{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:6px 14px;border-radius:10px;transition:background .15s;border:none;background:none;font-family:inherit}
+.mbn-item .mbn-ico{font-size:20px;line-height:1}
+.mbn-item .mbn-lbl{font-size:9px;font-weight:600;color:var(--txt3)}
+.mbn-item.active .mbn-lbl{color:var(--g)}
+
+@media(max-width:768px){
+  /* Hide top tabs on mobile, show bottom nav instead */
+  .app-tabs{display:none!important}
+  .mob-bot-nav{display:block}
+  /* Push app content up so bottom nav doesn't cover it */
+  #v-app .app{padding-bottom:68px}
+}
 .grad-green{background:linear-gradient(135deg,var(--g),var(--gd))}
 .grad-blue{background:linear-gradient(135deg,var(--blu),var(--pur))}
 .grad-orange{background:linear-gradient(135deg,var(--ora),var(--amb))}
@@ -339,17 +353,169 @@ tr:hover td{background:#fafbfc}
 .grad-teal{background:linear-gradient(135deg,var(--teal),var(--g))}
 .grad-multi{background:linear-gradient(135deg,var(--g) 0%,var(--teal) 50%,var(--blu) 100%)}
 
-@media(max-width:900px){
-  .hero{grid-template-columns:1fr}.hero-card{display:none}
-  .services-grid{grid-template-columns:repeat(2,1fr)}
-  .workers-grid,.trust-grid,.testimonials{grid-template-columns:1fr}
-  .how-grid{grid-template-columns:repeat(2,1fr)}
-  .footer-grid{grid-template-columns:1fr 1fr}
-  .detail-grid{grid-template-columns:1fr}
-  .chat-wrap{grid-template-columns:1fr}
-  .admin-sidebar{display:none}
-  .admin-main{margin-left:0}
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE — TABLET  (max 1024px)
+══════════════════════════════════════════════════════ */
+@media(max-width:1024px){
+  .hero{gap:36px}
+  .hero h1{font-size:40px}
+  .workers-grid{grid-template-columns:repeat(2,1fr)}
+  .trust-grid{grid-template-columns:repeat(2,1fr)}
+  .testimonials{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:28px}
   .ag{grid-template-columns:repeat(2,1fr)}
+  .detail-grid{grid-template-columns:1fr}
+  .book-box{position:static}
+}
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE — MOBILE  (max 768px)
+══════════════════════════════════════════════════════ */
+@media(max-width:768px){
+  /* ── NAV ── */
+  .lnav{padding:0 4%;height:60px}
+  .lnav-links{display:none}
+  .lnav-links.open{
+    display:flex;flex-direction:column;gap:0;
+    position:fixed;top:60px;left:0;right:0;bottom:0;
+    background:rgba(255,255,255,.98);backdrop-filter:blur(16px);
+    z-index:199;overflow-y:auto;padding:16px;
+    border-top:1px solid var(--border);
+  }
+  .lnav-links.open a{
+    font-size:16px;font-weight:600;color:var(--txt);padding:14px 16px;
+    border-radius:12px;border-bottom:1px solid var(--border);
+  }
+  .lnav-links.open .btn-g{width:100%;padding:14px;font-size:15px;margin-top:8px;text-align:center}
+  .hamburger{display:flex!important}
+
+  /* ── HERO ── */
+  .hero{grid-template-columns:1fr;padding:52px 5% 64px;text-align:center}
+  .hero-card{display:none}
+  .hero h1{font-size:30px;line-height:1.18}
+  .hero p{font-size:15px}
+  .hero-btns{justify-content:center}
+  .hero-badges{justify-content:center}
+
+  /* ── STATS ── */
+  .stats-bar{padding:18px 4%;gap:10px}
+  .stat-item .n{font-size:22px}
+  .stat-item .l{font-size:11px}
+
+  /* ── SECTIONS ── */
+  .section{padding:44px 5%}
+  .section-title{font-size:24px}
+  .section-sub{font-size:14px;margin-bottom:28px}
+
+  /* ── SERVICES ── */
+  .services-grid{grid-template-columns:repeat(2,1fr)!important;gap:10px}
+  .service-card{padding:20px 12px!important}
+  .service-card .ico{font-size:32px!important;margin-bottom:10px}
+  .service-card h3{font-size:13px!important}
+  .service-card p{display:none}
+
+  /* ── WORKERS ── */
+  .workers-grid{grid-template-columns:1fr!important;gap:14px}
+
+  /* ── HOW ── */
+  .how-grid{grid-template-columns:1fr;gap:14px}
+  .how-card{padding:20px 16px;display:flex;align-items:flex-start;gap:14px;text-align:left}
+  .how-num{margin:0;flex-shrink:0;width:44px;height:44px;font-size:16px;border-radius:12px}
+  .how-card h3{font-size:14px;margin-bottom:5px}
+  .how-card p{font-size:13px}
+
+  /* ── TRUST ── */
+  .trust-grid{grid-template-columns:1fr;gap:12px}
+  .trust-card{padding:18px;display:flex;align-items:flex-start;gap:14px;text-align:left}
+  .trust-icon{font-size:32px!important;margin-bottom:0!important}
+  .trust-card h3{font-size:14px;margin-bottom:5px}
+
+  /* ── TESTIMONIALS ── */
+  .testimonials{grid-template-columns:1fr;gap:14px}
+
+  /* ── CTA ── */
+  .cta-section{padding:50px 5%}
+  .cta-section h2{font-size:24px}
+  .cta-section p{font-size:14px}
+  .cta-btns{flex-direction:column;align-items:center}
+  .btn-white{width:100%;max-width:300px}
+
+  /* ── FOOTER ── */
+  footer{padding:36px 5% 20px}
+  .footer-grid{grid-template-columns:1fr;gap:24px}
+  .footer-bottom{flex-direction:column;gap:12px;text-align:center}
+  .footer-cities{justify-content:center}
+
+  /* ── APP TOPBAR ── */
+  .topbar{padding:0 14px;height:58px}
+  .tb-logo{font-size:17px}
+  .app-tabs{margin:0 6px!important;padding:0 4px}
+  .atab{padding:10px 10px;font-size:11px}
+  .user-chip span{display:none}
+
+  /* ── APP HOME ── */
+  #tab-home{padding:18px 4%!important}
+
+  /* ── SEARCH ── */
+  .search-wrap{padding:16px 4%}
+  .results-grid{grid-template-columns:1fr!important}
+
+  /* ── DETAIL ── */
+  .detail-wrap{padding:16px 4%}
+  .detail-hero{padding:20px;flex-direction:column;align-items:flex-start;gap:14px}
+  .dh-av{width:64px;height:64px;font-size:22px}
+  .dh-info h2{font-size:20px}
+  .dh-stats{gap:8px}
+  .dhs{padding:8px 12px}
+  .dhs .n{font-size:15px}
+  .detail-grid{grid-template-columns:1fr}
+  .book-box{position:static;margin-top:16px}
+
+  /* ── BOOKINGS ── */
+  .bookings-wrap{padding:16px 4%}
+
+  /* ── CHAT ── */
+  .chat-wrap{grid-template-columns:1fr;height:calc(100vh - 110px)}
+  .chat-list{display:none}
+  .chat-list.show{display:block;position:fixed;inset:0;z-index:50;padding-top:58px}
+  .chat-main{display:flex;flex-direction:column}
+
+  /* ── PROFILE ── */
+  .profile-wrap{padding:16px 4%}
+  .profile-hero{padding:24px 16px}
+  .profile-hero h2{font-size:18px}
+
+  /* ── ADMIN ── */
+  .admin-sidebar{display:none}
+  .admin-main{margin-left:0!important}
+  .admin-topbar{padding:0 16px}
+  .admin-content{padding:14px}
+  .ag{grid-template-columns:repeat(2,1fr);gap:10px}
+  .astat .n{font-size:20px}
+  table{font-size:11px}
+  th,td{padding:8px 10px}
+
+  /* ── MODALS ── */
+  .modal{padding:22px 18px;border-radius:18px;max-height:95vh}
+  .modal h3{font-size:17px;margin-bottom:16px}
+  .overlay{padding:8px;align-items:flex-end}
+  .modal{border-radius:22px 22px 0 0;max-width:100%!important;margin:0}
+
+  /* ── TOAST ── */
+  .toast{bottom:16px;right:12px;left:12px;text-align:center}
+}
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE — SMALL PHONE (max 380px)
+══════════════════════════════════════════════════════ */
+@media(max-width:380px){
+  .hero h1{font-size:26px}
+  .services-grid{grid-template-columns:repeat(2,1fr)!important;gap:8px}
+  .service-card{padding:14px 8px!important}
+  .atab{padding:9px 7px;font-size:10px}
+  .section-title{font-size:21px}
+  .ag{grid-template-columns:1fr}
+  .hstat-grid{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
@@ -364,16 +530,21 @@ tr:hover td{background:#fafbfc}
   <!-- NAV -->
   <nav class="lnav">
     <a class="logo" onclick="scrollToTop()">🏠 <span>Aetbar</span></a>
-    <div class="lnav-links">
-      <a onclick="scrollToId('sec-services')">Services</a>
-      <a onclick="scrollToId('sec-workers')">Workers</a>
-      <a onclick="scrollToId('sec-how')">How It Works</a>
-      <a onclick="scrollToId('sec-trust')">Why Aetbar</a>
-      <a onclick="showPage('about')">About Us</a>
-      <a onclick="showPage('contact')">Contact</a>
-      <a onclick="showModal('login-modal')">Login</a>
-      <button class="btn btn-g btn-sm" onclick="showModal('register-modal')">Get Started →</button>
+    <div class="lnav-links" id="mob-menu">
+      <a onclick="scrollToId('sec-services');closeMobMenu()">Services</a>
+      <a onclick="scrollToId('sec-workers');closeMobMenu()">Workers</a>
+      <a onclick="scrollToId('sec-how');closeMobMenu()">How It Works</a>
+      <a onclick="scrollToId('sec-trust');closeMobMenu()">Why Aetbar</a>
+      <a onclick="showPage('about');closeMobMenu()">About Us</a>
+      <a onclick="showPage('contact');closeMobMenu()">Contact</a>
+      <a onclick="showModal('login-modal');closeMobMenu()">Login</a>
+      <button class="btn btn-g btn-sm" onclick="showModal('register-modal');closeMobMenu()">Get Started →</button>
     </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMobMenu()" style="display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:8px;border-radius:10px;transition:background .15s" onmouseover="this.style.background='var(--gl)'" onmouseout="this.style.background='none'">
+      <span id="hb1" style="display:block;width:22px;height:2.5px;background:var(--txt);border-radius:2px;transition:all .3s"></span>
+      <span id="hb2" style="display:block;width:22px;height:2.5px;background:var(--txt);border-radius:2px;transition:all .3s"></span>
+      <span id="hb3" style="display:block;width:22px;height:2.5px;background:var(--txt);border-radius:2px;transition:all .3s"></span>
+    </button>
   </nav>
 
   <!-- HERO -->
@@ -937,11 +1108,18 @@ tr:hover td{background:#fafbfc}
         <div id="notif-list"></div>
       </div>
     </div>
+    <!-- MOBILE BOTTOM NAV -->
+    <div class="mob-bot-nav" id="mob-bot-nav">
+      <div class="mbn-items">
+        <button class="mbn-item active" id="mbn-home" onclick="appTab('home');setMBN('home')"><span class="mbn-ico">🏠</span><span class="mbn-lbl">Home</span></button>
+        <button class="mbn-item" id="mbn-search" onclick="appTab('search');setMBN('search')"><span class="mbn-ico">🔍</span><span class="mbn-lbl">Search</span></button>
+        <button class="mbn-item" id="mbn-bookings" onclick="appTab('bookings');setMBN('bookings')"><span class="mbn-ico">📅</span><span class="mbn-lbl">Bookings</span></button>
+        <button class="mbn-item" id="mbn-messages" onclick="appTab('messages');setMBN('messages')"><span class="mbn-ico">💬</span><span class="mbn-lbl">Messages</span></button>
+        <button class="mbn-item" id="mbn-profile" onclick="appTab('profile');setMBN('profile')"><span class="mbn-ico">👤</span><span class="mbn-lbl">Profile</span></button>
+      </div>
+    </div>
   </div>
 </div>
-
-<!-- ════════════════════════════════════════
-  VIEW: ADMIN PANEL
 ════════════════════════════════════════ -->
 <div class="view" id="v-admin">
   <div class="admin-layout">
@@ -1185,8 +1363,33 @@ function showModal(id){document.getElementById(id).classList.add('open')}
 function closeModal(id){document.getElementById(id).classList.remove('open')}
 function toast(msg,type='success'){const t=document.getElementById('toast');t.textContent=msg;t.className='toast show '+type;setTimeout(()=>t.classList.remove('show'),3500)}
 function showPage(name){const map={about:'page-about',contact:'page-contact',careers:'page-careers',blog:'page-blog',privacy:'page-privacy',terms:'page-terms',report:'page-report'};if(map[name])showModal(map[name])}
-function scrollToId(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'})}
+function scrollToId(id){closeMobMenu();const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'})}
 function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'})}
+
+// ── HAMBURGER MOBILE MENU ──
+let _mobOpen=false;
+function toggleMobMenu(){
+  _mobOpen=!_mobOpen;
+  const m=document.getElementById('mob-menu');
+  const h1=document.getElementById('hb1'),h2=document.getElementById('hb2'),h3=document.getElementById('hb3');
+  if(_mobOpen){
+    m.classList.add('open');document.body.style.overflow='hidden';
+    h1.style.transform='translateY(7.5px) rotate(45deg)';
+    h2.style.opacity='0';
+    h3.style.transform='translateY(-7.5px) rotate(-45deg)';
+  } else {
+    m.classList.remove('open');document.body.style.overflow='';
+    h1.style.transform='';h2.style.opacity='1';h3.style.transform='';
+  }
+}
+function closeMobMenu(){
+  _mobOpen=false;
+  const m=document.getElementById('mob-menu');
+  if(!m)return;
+  m.classList.remove('open');document.body.style.overflow='';
+  const h1=document.getElementById('hb1'),h2=document.getElementById('hb2'),h3=document.getElementById('hb3');
+  if(h1){h1.style.transform='';h2.style.opacity='1';h3.style.transform='';}
+}
 
 // ════════════════════════════════════════
 // AUTH
@@ -1277,6 +1480,14 @@ function initApp(){
   document.getElementById('wallet-bal').textContent='Rs '+(u.wallet_balance||0).toLocaleString();
   renderProfileStats();renderHomeWorkers();renderHomeBookings();renderSearch();renderChatList();renderNotifs();checkNotifDot();appTab('home')
 }
+function setMBN(name){
+  ['home','search','bookings','messages','profile'].forEach(x=>{
+    const el=document.getElementById('mbn-'+x);
+    if(el)el.classList.toggle('active',x===name);
+    const lbl=el?.querySelector('.mbn-lbl');
+    if(lbl)lbl.style.color=x===name?'var(--g)':'var(--txt3)';
+  });
+}
 function appTab(name){
   document.querySelectorAll('.atab').forEach(t=>t.classList.remove('on'));
   ['home','search','detail','bookings','messages','profile','notifications'].forEach(t=>{const el=document.getElementById('tab-'+t);if(el)el.style.display=t===name?'block':'none'});
@@ -1286,6 +1497,7 @@ function appTab(name){
   if(name==='bookings')renderBookings();
   if(name==='search')renderSearch();
   if(name==='notifications'){renderNotifs();markNotifsRead()}
+  if(['home','search','bookings','messages','profile'].includes(name))setMBN(name);
 }
 function appTabFilter(tab,cat){appState.searchFilter=cat;appTab(tab)}
 
